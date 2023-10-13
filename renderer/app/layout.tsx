@@ -1,4 +1,4 @@
-// import './globals.css'
+import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={
-          inter.className + ' bg-gradient-to-tr from-background to-accent'
+          inter.className + ' from-background to-accent bg-gradient-to-tr'
         }
       >
         <main className='min-h-screen p-2'>{children}</main>
