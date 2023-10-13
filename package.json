@@ -18,15 +18,23 @@
     "lint": "next lint renderer"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "electron-is-dev": "1.1.0",
     "electron-next": "3.1.5",
+    "lucide-react": "^0.286.0",
+    "next-themes": "^0.2.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "14.14.6",
-    "@types/react": "16.9.9",
-    "@types/react-dom": "16.9.9",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
     "autoprefixer": "^10.4.16",
     "electron": "27.0.0",
     "electron-builder": "24.6.4",
