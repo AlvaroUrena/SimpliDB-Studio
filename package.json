@@ -1,34 +1,41 @@
 {
+  "name": "simplidb-studio",
+  "description": "Simple DataBase Client",
+  "version": "0.1.0",
+  "author": "Álvaro Ureña Carrillo <alvarourenacarrillo11@gmail.com>",
   "private": true,
   "main": "main/index.js",
-  "productName": "ElectronTypescriptNext",
   "scripts": {
-    "clean": "rimraf dist main renderer/out renderer/.next",
-    "dev": "npm run build-electron && electron .",
+    "clean": "rimraf --glob dist main renderer/out renderer/.next",
+    "dev": "npm run build && electron .",
     "build-renderer": "next build renderer",
     "build-electron": "tsc -p electron-src",
-    "build": "npm run build-renderer && npm run build-electron",
+    "build": "npm run clean && npm run build-renderer && npm run build-electron",
     "pack-app": "npm run build && electron-builder --dir",
     "dist": "npm run build && electron-builder",
-    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json"
+    "dist:debug": "lldb ./dist/mac/electron-quick-start-typescript.app",
+    "dist:unpack": "npx asar extract ./dist/mac/electron-quick-start-typescript.app/Contents/Resources/app.asar ./dist/unpack",
+    "lint": "next lint renderer"
   },
   "dependencies": {
-    "electron-is-dev": "^1.1.0",
-    "electron-next": "^3.1.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "electron-is-dev": "1.1.0",
+    "electron-next": "3.1.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.6",
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.9",
-    "electron": "^13",
-    "electron-builder": "^23.0.3",
-    "next": "latest",
-    "rimraf": "^3.0.0",
-    "typescript": "^4.0.5"
+    "@types/node": "14.14.6",
+    "@types/react": "16.9.9",
+    "@types/react-dom": "16.9.9",
+    "electron": "27.0.0",
+    "electron-builder": "24.6.4",
+    "next": "13.5.2",
+    "rimraf": "3.0.0",
+    "typescript": "4.9.5"
   },
   "build": {
+    "appId": "com.alvarourena.simplidbstudio",
+    "productName": "SimpliDB-Studio",
     "asar": true,
     "files": [
       "main",
