@@ -1,0 +1,12 @@
+appId: com.alvarourena.simplidbstudio
+productName: SimpliDBStudio: Simple DataBase Client
+copyright: Copyright © 2023 Alvaro Ureña Carrillo
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null

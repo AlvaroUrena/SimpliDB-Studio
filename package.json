@@ -6,15 +6,17 @@
   "private": true,
   "main": "main/index.js",
   "scripts": {
-    "clean": "rimraf --glob dist main renderer/out renderer/.next",
-    "dev": "npm run build && electron .",
-    "build-renderer": "next build renderer",
-    "build-electron": "tsc -p electron-src",
-    "build": "npm run clean && npm run build-renderer && npm run build-electron",
-    "pack-app": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder",
-    "dist:debug": "lldb ./dist/mac/electron-quick-start-typescript.app",
-    "dist:unpack": "npx asar extract ./dist/mac/electron-quick-start-typescript.app/Contents/Resources/app.asar ./dist/unpack",
+    "dev": "tsc -p renderer && next dev renderer",
+    "build": "next build renderer",
+    "start": "next start renderer",
+    "dev:desktop": "npm run build:desktop && electron .",
+    "build:desktop": "npm run clean && npm run build:electron",
+    "dist": "npm run build:desktop && electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "rimraf dist renderer/.next main/*.js main/**/*.js",
+    "build:main": "tsc -p main",
+    "build:renderer": "next build renderer",
+    "build:electron": "npm run build:renderer && npm run build:main",
     "lint": "next lint renderer"
   },
   "dependencies": {
@@ -23,13 +25,16 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "electron-is-dev": "1.1.0",
-    "electron-next": "3.1.5",
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.4",
     "lucide-react": "^0.286.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "next": "13.5.2"
   },
   "devDependencies": {
     "@types/node": "14.14.6",
@@ -40,7 +45,6 @@
     "electron-builder": "24.6.4",
     "eslint": "8.51.0",
     "eslint-config-next": "13.5.4",
-    "next": "13.5.2",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
@@ -53,8 +57,8 @@
     "productName": "SimpliDB-Studio",
     "asar": true,
     "files": [
-      "main",
-      "renderer/out"
+      "main/*.js",
+      "renderer"
     ]
   }
 }
