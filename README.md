@@ -1,40 +1,28 @@
-# Electron with Typescript application example
+# Electron with Typescript application | SSR & API Routes Support!
 
 This example show how you can use Next.js inside an Electron application to avoid a lot of configuration, use Next.js router as view and use server-render to speed up the initial render of the application. Both Next.js and Electron layers are written in TypeScript and compiled to JavaScript during the build process.
 
 | Part       | Source code (Typescript) | Builds (JavaScript) |
 | ---------- | ------------------------ | ------------------- |
 | Next.js    | `/renderer`              | `/renderer`         |
-| Electron   | `/electron-src`          | `/main`             |
+| Electron   | `/main`                  | `/main`             |
 | Production |                          | `/dist`             |
-
-For development it's going to run a HTTP server and let Next.js handle routing. In production it use `output: 'export'` to pre-generate HTML static files and use them in your app instead of running an HTTP server.
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
 ```bash
-npx create-next-app --example with-electron-typescript with-electron-typescript-app
-```
-
-```bash
-yarn create next-app --example with-electron-typescript with-electron-typescript-app
-```
-
-```bash
-pnpm create next-app --example with-electron-typescript with-electron-typescript-app
-```
-
-Available commands:
-
-```bash
-"build-renderer": build and transpile Next.js layer
-"build-electron": transpile electron layer
-"build": build both layers
-"dev": start dev version
-"dist": create production electron build
-"type-check": check TypeScript in project
+"dev": Dev mode on Browser (nextjs standard dev mode)
+"build": Build nextjs app (nextjs standard build)
+"start": Start server with built app (nextjs standard start)
+"dev:desktop": Same as 'dev' but in electron app
+"build:desktop": Same as 'build' but in electron app
+"dist": Build and Generate production app
+"postinstall": Install some dependencies of electron builder
+"clean": Clean build dirs
+"build:main": Build typescript code of electron
+"build:renderer": "next build renderer",
+"build:electron": "npm run build:renderer && npm run build:main",
+"lint": "next lint renderer"
 ```
 
 ## Notes
@@ -45,4 +33,3 @@ _note regarding types:_
 
 - Electron provides its own type definitions, so you don't need @types/electron installed!
   source: https://www.npmjs.com/package/@types/electron
-- There were no types available for `electron-next` at the time of creating this example, so until they are available there is a file `electron-next.d.ts` in `electron-src` directory.
