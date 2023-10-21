@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
+import { trpc } from '@/utils/trpc'
 
 export default function Home() {
   const [text, setText] = useState('')
+  const listenners = trpc.getMaxListeners.useQuery()
 
   const handleClick = async () => {
-    const req = await fetch('/api/demo')
-    const res = await req.json()
-    setText(res.text)
+    if (!listenners.data) {
+      return <div>Loading...</div>
+    }
+    setText(listenners.data.toString())
   }
 
   return (
