@@ -1,6 +1,7 @@
 import { httpBatchLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
 import type { AppRouter } from '../server/routers/_app'
+import { createTRPCReact } from '@trpc/react-query'
 
 function getBaseUrl() {
   if (typeof window !== 'undefined')
@@ -45,3 +46,4 @@ export const trpc = createTRPCNext<AppRouter>({
    **/
   ssr: false
 })
+export const trpcReact = createTRPCReact<AppRouter>()
