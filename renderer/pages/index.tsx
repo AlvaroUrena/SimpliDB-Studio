@@ -1,4 +1,3 @@
-import { ModeToggle } from '@/components/mode-toggle'
 import { AddDatabase } from '@/components/AddDatabase'
 
 export default function Home() {
