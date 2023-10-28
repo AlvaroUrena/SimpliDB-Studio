@@ -50,4 +50,9 @@
     --input: 215 27.9% 16.9%;
     --ring: 263.4 70% 50.4%;
   }
+
+  .color-background {
+    overflow: hidden;
+    background: linear-gradient(40deg, rgb(108, 0, 162), rgb(0, 17, 82));
+  }
 }
