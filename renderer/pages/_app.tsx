@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { trpc } from '@/utils/trpc'
 import Layout from '@/components/Layout'
 import { ThemeProvider } from '@/components/theme-provider'
+import { I18nProvider } from '../locales'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ function App({ Component, pageProps }: AppProps) {
       disableTransitionOnChange
     >
       <Layout>
-        <Component {...pageProps} />
+        <I18nProvider locale={pageProps.locale}>
+          <Component {...pageProps} />
+        </I18nProvider>
       </Layout>
     </ThemeProvider>
   )
